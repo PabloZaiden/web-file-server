@@ -26,10 +26,16 @@
 	</form>
 
 	<script type="text/javascript">
+		var clickedSubmit;
+
 		$(document).ready(function() {
+			$("#deleteForm input[type=submit]").click(function (event) {
+				clickedSubmit = this;
+			});
+
 			$("#deleteForm").submit(function(e) {
-				if (confirm("Are you sure? This action cannot be undone")) {
-					var button = $("#deleteForm input[type=submit]:focus");
+				if (clickedSubmit != undefined && confirm("Are you sure? This action cannot be undone")) {
+					var button = $(clickedSubmit);
 					var fileName = button.attr("filename");
 					$("#fileName").val(fileName);
 				} else {

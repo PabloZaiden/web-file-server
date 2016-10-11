@@ -50,7 +50,7 @@ export default class Admin {
         let files = context.request["files"];
         let fileName: string = body.fileName;
 
-        if (files && !Util.isEmpty(body.fileName)) {
+        if (files && !Util.isEmpty(fileName)) {
             if (files.newFile.data.length > 0) {
                 let content = new Buffer(files.newFile.data);
                 fileName = fileName.trim();
@@ -71,10 +71,8 @@ export default class Admin {
         let fileName: string = body.fileName;
         if (!Util.isEmpty(body.fileName)) {
             fileName = fileName.trim();
-            console.log("File to delete: " + fileName);
 
             if (!fileName.startsWith(".") && !(fileName.indexOf("/") >= 0)) {
-                console.log("Deleting: " + fileName);
                 let fullPath = path.join(process.env.content_dir, fileName);
                 fs.unlinkSync(fullPath);
             }
