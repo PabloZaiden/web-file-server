@@ -1,0 +1,45 @@
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/site.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<h1>File list</h1>
+	<form id="deleteForm" method="post" action="{{links.deleteFile}}">
+		<ul>
+			{{#each files}}
+			<li><a href="{{../links/file}}{{this}}">{{this}}</a> <input type="submit" filename="{{this}}" value="Delete"> </li> {{/each}}
+		</ul>
+
+		<input type="hidden" name="fileName" id="fileName" value="" />
+	</form>
+
+	<h1>Add new file</h1>
+
+	<form method="post" enctype="multipart/form-data">
+		File name: <input type="text" name="fileName" /> <input type="file" name="newFile" /> <br />
+
+		<input type="submit" value="Add file" />
+
+	</form>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#deleteForm").submit(function(e) {
+				if (confirm("Are you sure? This action cannot be undone")) {
+					var button = $("#deleteForm input[type=submit]:focus");
+					var fileName = button.attr("filename");
+					$("#fileName").val(fileName);
+				} else {
+					e.preventDefault();
+				}
+				
+			});
+		});
+	</script>
+
+</body>
+
+</html>

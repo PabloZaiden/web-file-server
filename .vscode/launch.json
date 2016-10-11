@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/app.js",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "env": {
+                "NODE_ENV": "development",
+                "session_secret": "ED25AE30-03FF-4323-8140-979F1E574220",
+                "admin_user": "admin",
+                "admin_password": "admin",
+                "content_dir": "./content"
+            },
+            "sourceMaps": true,
+            "outDir": null
+        }
+    ]
+}
