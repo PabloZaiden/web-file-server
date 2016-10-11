@@ -5,7 +5,7 @@ import * as fs from "fs";
 import * as path from "path";
 import Util from "../util";
 
-@Controller("/")
+@Controller("/files")
 @DocController("File Controller.")
 export default class File {
 
