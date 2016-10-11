@@ -116,6 +116,8 @@ export default class App {
 
         if (!App.isDevelopment) {
             K.addErrorHandler((error: any, req: Express.Request, res: Express.Response, next: Function) => {
+                console.error(error);
+
                 // shhh... these are not the doids you are looking for. Move along.
                 res.redirect("/");
             });
