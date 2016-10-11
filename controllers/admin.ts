@@ -69,11 +69,12 @@ export default class Admin {
     @ActionMiddleware(App.authorize)
     delete(context: Context, @K.FromBody() body: any): void {
         let fileName: string = body.fileName;
-
         if (!Util.isEmpty(body.fileName)) {
             fileName = fileName.trim();
+            console.log("File to delete: " + fileName);
 
             if (!fileName.startsWith(".") && !(fileName.indexOf("/") >= 0)) {
+                console.log("Deleting: " + fileName);
                 let fullPath = path.join(process.env.content_dir, fileName);
                 fs.unlinkSync(fullPath);
             }
